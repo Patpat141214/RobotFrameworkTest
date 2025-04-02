@@ -20,7 +20,7 @@ Automation Login
 *** Keywords ***
 Login User
 
-    [Documentation]    This test will automate the login of the users
+    [Documentation]    This test will automate the login of the user
     [Tags]    Login
     Open Browser    ${URL}    chrome
     Maximize Browser Window
