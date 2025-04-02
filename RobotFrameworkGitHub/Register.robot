@@ -31,6 +31,7 @@ Login User
     Scroll Element Into View    ${LoginButton}
     Click Button    ${LoginButton}
     Sleep    3s
+    Set Test Message    Successfully Logged In
 
 Validation of Login
 
@@ -38,6 +39,6 @@ Validation of Login
     [Tags]    Login Validation
     ${Message1}    Set Variable    xpath://h1[@class='post-title' and text()='Logged In Successfully']
     Element Should Be Visible    ${Message1}
- 
+    Set Test Message    Successfully Validate data
    
 
