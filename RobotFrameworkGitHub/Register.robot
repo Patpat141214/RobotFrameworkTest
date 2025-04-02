@@ -30,7 +30,7 @@ Login User
     ${LoginButton}    Set Variable    id=submit
     Scroll Element Into View    ${LoginButton}
     Click Button    ${LoginButton}
-    Sleep    3s
+    Sleep    5s
     Set Test Message    Successfully Logged In
 
 Validation of Login
