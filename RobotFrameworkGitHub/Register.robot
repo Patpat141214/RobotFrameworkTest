@@ -12,7 +12,7 @@ ${Password}    Password123
 Automation Login
     Login User
     Validation of Login
-    
+    Set Test Message    Logged in automation and validating user 
   
 
 
@@ -31,7 +31,6 @@ Login User
     Scroll Element Into View    ${LoginButton}
     Click Button    ${LoginButton}
     Sleep    5s
-    Set Test Message    Successfully Logged In
 
 Validation of Login
 
@@ -39,6 +38,6 @@ Validation of Login
     [Tags]    Login Validation
     ${Message1}    Set Variable    xpath://h1[@class='post-title' and text()='Logged In Successfully']
     Element Should Be Visible    ${Message1}
-    Set Test Message    Successfully Validate data
+
    
 

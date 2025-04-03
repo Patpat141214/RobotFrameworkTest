@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-04-04T01:29:35.035560" rpa="false" schemaversion="5">
+<suite id="s1" name="RobotFrameworkGitHub" source="D:\VSCode\RobotFrameworkGitHub">
+<suite id="s1-s1" name="ApiTest" source="D:\VSCode\RobotFrameworkGitHub\ApiTest.robot">
+<test id="s1-s1-t1" name="Test All Https Methods" line="8">
+<kw name="Post Request Test">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:35.569076" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-04-04T01:29:35.568918" elapsed="0.000316"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-04T01:29:35.569633" level="INFO">${data} = {'title': 'test', 'body': 'bar', 'userId': '2'}</msg>
+<var>${data}</var>
+<arg>title=test</arg>
+<arg>body=bar</arg>
+<arg>userId=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-04T01:29:35.569359" elapsed="0.000314"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:36.749873" level="INFO">POST Request : url=https://jsonplaceholder.typicode.com/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"title": "test", "body": "bar", "userId": "2"}' 
+ </msg>
+<msg time="2025-04-04T01:29:36.750021" level="INFO">POST Response : url=https://jsonplaceholder.typicode.com/posts 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 03 Apr 2025 17:29:36 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '68', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1743701376&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=svF0SJKJqqI6gVa6yvWDzWDu0gx272%2B0PPc1%2BDRV2v0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1743701376&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=svF0SJKJqqI6gVa6yvWDzWDu0gx272%2B0PPc1%2BDRV2v0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '997', 'X-Ratelimit-Reset': '1743701378', 'Vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'Access-Control-Expose-Headers': 'Location', 'Location': 'https://jsonplaceholder.typicode.com/posts/101', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"44-1V3WDrN1uHqBY+yex11vofecllg"', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'CF-RAY': '92aa4a0008f98b32-HKG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "title": "test",
+  "body": "bar",
+  "userId": "2",
+  "id": 101
+} 
+ </msg>
+<msg time="2025-04-04T01:29:36.750104" level="INFO">C:\Users\PatrickF\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-04T01:29:36.750762" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/posts</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-04T01:29:35.569763" elapsed="1.181035"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-04T01:29:36.751376" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-04T01:29:36.750943" elapsed="0.000505"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:36.752005" level="INFO">Status Code: 201</msg>
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:36.751615" elapsed="0.000438"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:36.752528" level="INFO">Response: {'title': 'test', 'body': 'bar', 'userId': '2', 'id': 101}</msg>
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:36.752156" elapsed="0.000423"/>
+</kw>
+<doc>Validate POST request to create a post.</doc>
+<status status="PASS" start="2025-04-04T01:29:35.568500" elapsed="1.184147"/>
+</kw>
+<kw name="Get Request Test">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:36.753401" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-04-04T01:29:36.753160" elapsed="0.000408"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:37.243379" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/posts/2 
+ path_url=/posts/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-04-04T01:29:37.243475" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/posts/2 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 03 Apr 2025 17:29:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1743533410&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=fkqKyN7iaF%2BsqBxJdDkJg5QP9sCyj8%2BkLpb0jRuAhNE%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1743533410&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=fkqKyN7iaF%2BsqBxJdDkJg5QP9sCyj8%2BkLpb0jRuAhNE%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1743533454', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'max-age=43200', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"116-jnDuMpjju89+9j7e0BqkdFsVRjs"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'HIT', 'Age': '25503', 'Server': 'cloudflare', 'CF-RAY': '92aa4a072f44857c-HKG', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=152121&amp;min_rtt=149578&amp;rtt_var=57908&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2840&amp;recv_bytes=785&amp;delivery_rate=28319&amp;cwnd=245&amp;unsent_bytes=0&amp;cid=fe4905832853965e&amp;ts=166&amp;x=0"'} 
+ body={
+  "userId": 1,
+  "id": 2,
+  "title": "qui est esse",
+  "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+} 
+ </msg>
+<msg time="2025-04-04T01:29:37.243646" level="INFO">C:\Users\PatrickF\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-04T01:29:37.244494" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/posts/2</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-04T01:29:36.753689" elapsed="0.490852"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-04T01:29:37.245073" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-04T01:29:37.244713" elapsed="0.000419"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:37.245841" level="INFO">Status Code: 200</msg>
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:37.245224" elapsed="0.000664"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:37.246295" level="INFO">Response: {'userId': 1, 'id': 2, 'title': 'qui est esse', 'body': 'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla'}</msg>
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:37.245975" elapsed="0.000362"/>
+</kw>
+<doc>Validate GET request to fetch a post.</doc>
+<status status="PASS" start="2025-04-04T01:29:36.752934" elapsed="0.493459"/>
+</kw>
+<kw name="Put Request Test">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:37.246900" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-04-04T01:29:37.246798" elapsed="0.000208"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-04T01:29:37.247243" level="INFO">${data} = {'title': 'what1', 'body': 'what1'}</msg>
+<var>${data}</var>
+<arg>title=what1</arg>
+<arg>body=what1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-04T01:29:37.247093" elapsed="0.000171"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-04-04T01:29:38.448299" level="INFO">PUT Request : url=https://jsonplaceholder.typicode.com/posts/2 
+ path_url=/posts/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '35', 'Content-Type': 'application/json'} 
+ body=b'{"title": "what1", "body": "what1"}' 
+ </msg>
+<msg time="2025-04-04T01:29:38.448387" level="INFO">PUT Response : url=https://jsonplaceholder.typicode.com/posts/2 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 03 Apr 2025 17:29:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1743701378&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=hHmFQFTcSiejspv9I4cOTBvf69BKw0JeLb7EIAhNw%2Fg%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1743701378&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=hHmFQFTcSiejspv9I4cOTBvf69BKw0JeLb7EIAhNw%2Fg%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1743701438', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"34-lUMgOtVa9jGJ2S74GK0SnScPjsM"', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '92aa4a0a9a4a0466-HKG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "title": "what1",
+  "body": "what1",
+  "id": 2
+} 
+ </msg>
+<msg time="2025-04-04T01:29:38.448455" level="INFO">C:\Users\PatrickF\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-04T01:29:38.449310" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/posts/2</arg>
+<arg>json=${data}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-04T01:29:37.247340" elapsed="1.202031"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-04T01:29:38.450045" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-04T01:29:38.449559" elapsed="0.000547"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:38.450518" level="INFO">Status Code: 200</msg>
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:38.450213" elapsed="0.000344"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-04T01:29:38.451028" level="INFO">Response: {'title': 'what1', 'body': 'what1', 'id': 2}</msg>
+<arg>Response: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-04T01:29:38.450636" elapsed="0.000432"/>
+</kw>
+<doc>Validate PUT request to update a data</doc>
+<status status="PASS" start="2025-04-04T01:29:37.246626" elapsed="1.204500"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-04-04T01:29:38.451441" level="INFO">Set test message to:
+API Testing</msg>
+<arg>API Testing</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-04-04T01:29:38.451353" elapsed="0.000127"/>
+</kw>
+<status status="PASS" start="2025-04-04T01:29:35.567864" elapsed="2.883826">API Testing</status>
+</test>
+<status status="PASS" start="2025-04-04T01:29:35.069155" elapsed="3.383772"/>
+</suite>
+<suite id="s1-s2" name="Register" source="D:\VSCode\RobotFrameworkGitHub\Register.robot">
+<test id="s1-s2-t1" name="Automation Login" line="12">
+<kw name="Login User">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-04T01:29:38.665750" level="INFO">Opening browser 'chrome' to base url 'https://practicetestautomation.com/practice-test-login/'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-04T01:29:38.665556" elapsed="2.614252"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-04T01:29:41.279990" elapsed="0.032281"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T01:29:43.313222" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T01:29:41.312427" elapsed="2.000985"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-04T01:29:43.313871" level="INFO">Typing text 'student' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${Username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T01:29:43.313558" elapsed="0.083223"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-04T01:29:43.397141" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-04-04T01:29:43.424675" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=password</arg>
+<arg>${Password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T01:29:43.396936" elapsed="0.064235"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-04T01:29:43.461472" level="INFO">${LoginButton} = id=submit</msg>
+<var>${LoginButton}</var>
+<arg>id=submit</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-04T01:29:43.461325" elapsed="0.000176"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>${LoginButton}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2025-04-04T01:29:43.461607" elapsed="0.288307"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-04T01:29:43.750310" level="INFO">Clicking button 'id=submit'.</msg>
+<arg>${LoginButton}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-04T01:29:43.750083" elapsed="0.479344"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-04T01:29:49.230029" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-04T01:29:44.229587" elapsed="5.000547"/>
+</kw>
+<tag>Login</tag>
+<doc>This test will automate the login of the user</doc>
+<status status="PASS" start="2025-04-04T01:29:38.665080" elapsed="10.565142"/>
+</kw>
+<kw name="Validation of Login">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-04T01:29:49.230988" level="INFO">${Message1} = xpath://h1[@class='post-title' and text()='Logged In Successfully']</msg>
+<var>${Message1}</var>
+<arg>xpath://h1[@class='post-title' and text()='Logged In Successfully']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-04T01:29:49.230854" elapsed="0.000161"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-04-04T01:29:49.250398" level="INFO">Element 'xpath://h1[@class='post-title' and text()='Logged In Successfully']' is displayed.</msg>
+<arg>${Message1}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-04T01:29:49.231115" elapsed="0.019422"/>
+</kw>
+<tag>Login Validation</tag>
+<doc>This test will validate the successful login</doc>
+<status status="PASS" start="2025-04-04T01:29:49.230581" elapsed="0.020063"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-04-04T01:29:49.251173" level="INFO">Set test message to:
+Logged in automation and validating user</msg>
+<arg>Logged in automation and validating user</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-04-04T01:29:49.251018" elapsed="0.000247"/>
+</kw>
+<status status="PASS" start="2025-04-04T01:29:38.664536" elapsed="10.587013">Logged in automation and validating user</status>
+</test>
+<status status="PASS" start="2025-04-04T01:29:38.454121" elapsed="10.798572"/>
+</suite>
+<status status="PASS" start="2025-04-04T01:29:35.036880" elapsed="14.217227"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="RobotFrameworkGitHub" id="s1" pass="2" fail="0" skip="0">RobotFrameworkGitHub</stat>
+<stat name="ApiTest" id="s1-s1" pass="1" fail="0" skip="0">RobotFrameworkGitHub.ApiTest</stat>
+<stat name="Register" id="s1-s2" pass="1" fail="0" skip="0">RobotFrameworkGitHub.Register</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
